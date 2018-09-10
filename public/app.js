@@ -15,15 +15,18 @@ new Vue({
         this.ws.addEventListener('message', function (e) {
             console.log(`what is e? `, e);
 
-            var msg = JSON.parse(e.data);            
+            var msg = JSON.parse(e.data);
+            console.log(msg);
+            console.log(msg.email);
+            console.log(msg.Username);
+            console.log(msg.Message);
             self.chatContent += '<div class="chip">'
                 + '<img src="' + self.gravatarURL(msg.email) + '">' // Avatar
-                + msg.username
+                + msg.Username
                 + '</div>'
-                // + msg.message
-                + emojione.toImage(msg.message) 
+                + emojione.toImage(msg.Message)
                 + '<br/>'; // Parse emojis
-
+            console.log(self.chatContent)
             var element = document.getElementById('chat-messages');
             element.scrollTop = element.scrollHeight; // Auto scroll to the bottom
         });
